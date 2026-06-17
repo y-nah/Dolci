@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dolci – A taste of sweetness</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pink: {
+                light: "#fde8ef",
+                mid: "#f9c4d4",
+                deep: "#e8839f",
+                dark: "#c95c7a",
+              },
+              cream: "#fff8f9",
+              rose: {
+                text: "#2d1a20",
+                mid: "#6b4352",
+                muted: "#b07a8e",
+              },
+            },
+            fontFamily: {
+              display: ['"Playfair Display"', "Georgia", "serif"],
+              body: ['"DM Sans"', "system-ui", "sans-serif"],
+            },
+            borderRadius: {
+              "4xl": "2rem",
+              "5xl": "2.5rem",
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        font-family: "DM Sans", system-ui, sans-serif;
+      }
+      .font-display {
+        font-family: "Playfair Display", Georgia, serif;
+      }
+      .fade-in {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .blob {
+        animation: blobMorph 8s ease-in-out infinite;
+      }
+      @keyframes blobMorph {
+        0%,
+        100% {
+          border-radius: 60% 40% 50% 50% / 50% 60% 40% 50%;
+        }
+        33% {
+          border-radius: 50% 50% 60% 40% / 60% 40% 60% 40%;
+        }
+        66% {
+          border-radius: 40% 60% 40% 60% / 40% 50% 50% 60%;
+        }
+      }
+      .hide-scrollbar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      #sweetest-picks {
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+      }
+      .dot-pattern {
+        background-image: radial-gradient(#e8839f 1.5px, transparent 1.5px);
+        background-size: 14px 14px;
+      }
+    </style>
+  </head>
+
+  <body class="bg-cream text-rose-text">
+    <nav
+      class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-pink-mid"
+    >
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-8">
+        <a
+          href="#"
+          class="font-display text-2xl font-bold text-pink-dark mr-auto"
+          >🎀 Dolci</a
+        >
+
+        <ul class="hidden md:flex gap-8">
+          <li>
+            <a
+              href="#"
+              class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
+              >Menu</a
+            >
+          </li>
+          <li>
+            <a
+              href="#"
+              class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
+              >Contact</a
+            >
+          </li>
+        </ul>
+
+        <button
+          class="hidden md:block text-sm font-medium px-5 py-2 rounded-full bg-pink-light text-pink-dark hover:bg-pink-mid transition-colors"
+        >
+          Order Now
+        </button>
+
+        <button id="nav-toggle" class="md:hidden text-pink-dark text-2xl">
+          ☰
+        </button>
+      </div>
+
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden px-6 pb-4 flex flex-col gap-4 border-t border-pink-mid bg-cream"
+      >
+        <a href="#" class="text-sm text-rose-mid font-medium py-1">Home</a>
+        <a href="#" class="text-sm text-rose-mid font-medium py-1">About</a>
+        <a href="#" class="text-sm text-rose-mid font-medium py-1">Menu</a>
+        <a href="#" class="text-sm text-rose-mid font-medium py-1">Contact</a>
+      </div>
+    </nav>
+
+    <section class="bg-gradient-to-br from-pink-light via-[#fef0f4] to-cream">
+      <div
+        class="max-w-6xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center gap-12"
+      >
+        <div class="flex-1 max-w-lg text-center md:text-left">
+          <p
+            class="text-xs font-semibold tracking-[3px] uppercase text-pink-deep mb-3"
+          >
+            Handcrafted with love
+          </p>
+          <h1
+            class="font-display font-bold leading-none text-[clamp(64px,10vw,110px)] text-rose-text mb-2"
+          >
+            Dolci
+          </h1>
+          <p
+            class="font-display italic text-[clamp(18px,3vw,26px)] text-pink-deep mb-10"
+          >
+            Cuteness in Every Layer
+          </p>
+          <div class="flex gap-3 justify-center md:justify-start flex-wrap">
+            <a
+              href="#"
+              class="px-7 py-3 rounded-full bg-pink-dark text-white text-sm font-medium hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all shadow-lg shadow-pink-dark/20"
+            >
+              Explore Menu
+            </a>
+            <a
+              href="#"
+              class="px-7 py-3 rounded-full border-2 border-pink-dark text-pink-dark text-sm font-medium hover:bg-pink-light hover:-translate-y-0.5 transition-all"
+            >
+              Our Story
+            </a>
+          </div>
+        </div>
+
+        <div class="flex-1 flex justify-center">
+          <div
+            class="blob w-72 h-72 md:w-96 md:h-96 overflow-hidden bg-pink-mid shadow-2xl shadow-pink-deep/25"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=500&q=80"
+              alt="Beautiful cake"
+              class="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20">
+      <h2
+        class="font-display text-3xl md:text-4xl text-center text-rose-text mb-6"
+      >
+        Our Sweetest Picks
+      </h2>
+      <p class="text-center text-sm text-rose-mid max-w-2xl mx-auto mb-8">
+        Swipe through our favorite cakes in a sweeter, more playful way.
+      </p>
+
+      <div class="relative">
+        <button
+          id="picks-prev"
+          type="button"
+          class="absolute left-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 text-pink-dark shadow-lg shadow-pink-deep/20 p-3 opacity-80 hover:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-pink-mid"
+          aria-label="Scroll left"
+        >
+          ‹
+        </button>
+        <button
+          id="picks-next"
+          type="button"
+          class="absolute right-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-white/90 text-pink-dark shadow-lg shadow-pink-deep/20 p-3 opacity-80 hover:opacity-100 transition-opacity focus:outline-none focus:ring-2 focus:ring-pink-mid"
+          aria-label="Scroll right"
+        >
+          ›
+        </button>
+
+        <div
+          id="sweetest-picks"
+          class="fade-in flex gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth hide-scrollbar"
+        >
+          <div
+            class="min-w-[280px] flex-shrink-0 snap-start bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-mid/30 transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1514190051997-0f6f39ca5cde?w=300&q=80"
+              alt="Macarons"
+              class="w-full h-44 object-cover"
+            />
+            <div class="p-4 pb-5">
+              <h3
+                class="font-display text-base font-semibold text-rose-text mb-1"
+              >
+                Bento Cakes
+              </h3>
+              <p class="text-xs text-rose-muted mb-3">
+                An adorable, personal-sized mini cake
+              </p>
+              <span class="text-sm font-semibold text-pink-dark">₱1MILLION</span>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[280px] flex-shrink-0 snap-start relative bg-white rounded-3xl overflow-hidden border-2 border-pink-mid shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-mid/30 transition-all duration-300"
+          >
+            <span
+              class="absolute top-3 right-3 z-10 bg-pink-dark text-white text-[10px] font-bold px-3 py-1 rounded-full tracking-wide"
+              >Bestseller</span
+            >
+            <img
+              src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=300&q=80"
+              alt="Layered Cake"
+              class="w-full h-44 object-cover"
+            />
+            <div class="p-4 pb-5">
+              <h3
+                class="font-display text-base font-semibold text-rose-text mb-1"
+              >
+                Bento Cakes
+              </h3>
+              <p class="text-xs text-rose-muted mb-3">
+                An adorable, personal-sized mini cake
+              </p>
+              <span class="text-sm font-semibold text-pink-dark">₱10000,00000
+              </span>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[280px] flex-shrink-0 snap-start bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-mid/30 transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=300&q=80"
+              alt="Cupcakes"
+              class="w-full h-44 object-cover"
+            />
+            <div class="p-4 pb-5">
+              <h3
+                class="font-display text-base font-semibold text-rose-text mb-1"
+              >
+                Bento Cakes
+              </h3>
+              <p class="text-xs text-rose-muted mb-3">
+                An adorable, personal-sized mini cake
+              </p>
+              <span class="text-sm font-semibold text-pink-dark">₱1</span>
+            </div>
+          </div>
+
+          <div
+            class="min-w-[280px] flex-shrink-0 snap-start bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1.5 hover:shadow-xl hover:shadow-pink-mid/30 transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=300&q=80"
+              alt="Cookies"
+              class="w-full h-44 object-cover"
+            />
+            <div class="p-4 pb-5">
+              <h3
+                class="font-display text-base font-semibold text-rose-text mb-1"
+              >
+                Bento Cakes
+              </h3>
+              <p class="text-xs text-rose-muted mb-3">
+                An adorable, personal-sized mini cake
+              </p>
+              <span class="text-sm font-semibold text-pink-dark">₱99999</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-pink-light py-20">
+      <div
+        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14"
+      >
+        <div class="fade-in flex-1 relative max-w-md">
+          <img
+            src="https://images.unsplash.com/photo-1607478900766-efe13248b125?w=500&q=80"
+            alt="Baker at work"
+            class="rounded-[2.5rem] w-full h-[420px] object-cover shadow-xl"
+          />
+          <div
+            class="dot-pattern absolute -bottom-5 -right-5 w-28 h-28 rounded-xl opacity-50 -z-10"
+          ></div>
+        </div>
+
+        <div class="fade-in flex-1 max-w-md">
+          <span
+            class="text-[11px] font-bold tracking-[2.5px] uppercase text-pink-dark mb-3 block"
+            >About Dolci</span
+          >
+          <h2
+            class="font-display text-3xl md:text-4xl leading-snug text-rose-text mb-5"
+          >
+            Made from scratch, <em>always</em>
+          </h2>
+          <p class="text-rose-mid text-sm leading-relaxed mb-8">
+            MEWOMEOWMEOWEOWMOEWMOEMEOOOOOOOOOOOOOW
+          </p>
+
+          <div class="flex gap-8 mb-8">
+            <div class="fade-in">
+              <strong class="font-display text-3xl text-pink-dark block"
+                >5000+</strong
+              >
+              <span class="text-xs text-rose-muted">Years baking</span>
+            </div>
+            <div class="fade-in">
+              <strong class="font-display text-3xl text-pink-dark block"
+                >202020K+</strong
+              >
+              <span class="text-xs text-rose-muted">Happy customers</span>
+            </div>
+            <div class="fade-in">
+              <strong class="font-display text-3xl text-pink-dark block"
+                >50000+</strong
+              >
+              <span class="text-xs text-rose-muted">Menu items</span>
+            </div>
+          </div>
+
+          <a
+            href="#"
+            class="inline-block px-7 py-3 rounded-full bg-pink-dark text-white text-sm font-medium hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all shadow-lg shadow-pink-dark/20 animate-bounce"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="max-w-6xl mx-auto px-6 py-20">
+      <h2 class="font-display text-2xl md:text-3xl text-rose-text mb-8">
+        From Our Kitchen
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div
+          class="fade-in md:col-span-2 bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e?w=700&q=80"
+            alt="Tea and pastries"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-6">
+            <span
+              class="inline-block bg-pink-light text-pink-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+              >Tips</span
+            >
+            <h3 class="font-display text-lg text-rose-text mb-2">
+              How to train your dragon
+            </h3>
+            <p class="text-xs text-rose-muted leading-relaxed mb-4">
+              RAAAAAAAAAAAAAWRRRRRRRRRRR
+            </p>
+            <a
+              href="#"
+              class="text-xs font-semibold text-pink-dark hover:underline"
+              >Read more →</a
+            >
+          </div>
+        </div>
+
+        <div
+          class="fade-in bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1495147466023-ac5c588e2e94?w=400&q=80"
+            alt="Strawberry cake"
+            class="w-full h-56 object-cover"
+          />
+          <div class="p-6">
+            <span
+              class="inline-block bg-pink-light text-pink-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+              >Recipe</span
+            >
+            <h3 class="font-display text-lg text-rose-text mb-2">
+              Strawberry shortcake secrets
+            </h3>
+            <p class="text-xs text-rose-muted leading-relaxed mb-4">
+              The tips our bakers swear by for a perfect, fluffy shortcake every
+              time.
+            </p>
+            <a
+              href="#"
+              class="text-xs font-semibold text-pink-dark hover:underline"
+              >Read more →</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-cream py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="font-display text-2xl md:text-3xl text-rose-text mb-8">
+          Baking Guides
+        </h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div
+            class="fade-in bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=400&q=80"
+              alt="Lemon tart"
+              class="w-full h-40 object-cover"
+            />
+            <div class="p-5">
+              <span
+                class="inline-block bg-pink-light text-pink-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                >Guide</span
+              >
+              <h3 class="font-display text-base text-rose-text mb-1">
+                Brazillian Dance Tutorial
+              </h3>
+              <p class="text-xs text-rose-muted leading-relaxed mb-4">
+                :>
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-pink-mid"></div>
+                <span class="text-xs text-rose-muted">Chef Trina</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="fade-in bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80"
+              alt="Bread"
+              class="w-full h-40 object-cover"
+            />
+            <div class="p-5">
+              <span
+                class="inline-block bg-pink-light text-pink-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                >Guide</span
+              >
+              <h3 class="font-display text-base text-rose-text mb-1">
+                Scuba 
+              </h3>
+              <p class="text-xs text-rose-muted leading-relaxed mb-4">
+                scuuuubbbbaaa scubbbaaa
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-[#f5c4b0]"></div>
+                <span class="text-xs text-rose-muted">Chef Minh</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="fade-in bg-white rounded-3xl overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1470324161839-ce2bb6fa6bc3?w=400&q=80"
+              alt="Croissant"
+              class="w-full h-40 object-cover"
+            />
+            <div class="p-5">
+              <span
+                class="inline-block bg-pink-light text-pink-dark text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3"
+                >Guide</span
+              >
+              <h3 class="font-display text-base text-rose-text mb-1">
+                How to swim
+              </h3>
+              <p class="text-xs text-rose-muted leading-relaxed mb-4">
+                swimming
+              </p>
+              <div class="flex items-center gap-2">
+                <div class="w-6 h-6 rounded-full bg-[#c4d8f5]"></div>
+                <span class="text-xs text-rose-muted">Chef Iesha</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-cream py-20">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="bg-white rounded-[2rem] border border-pink-light shadow-xl p-10">
+          <div
+            class="flex flex-col md:flex-row items-center justify-between gap-6 mb-10"
+          >
+            <div>
+              <p
+                class="text-xs font-semibold tracking-[3px] uppercase text-pink-deep mb-3"
+              >
+                Customer love
+              </p>
+              <h2 class="font-display text-3xl md:text-4xl text-rose-text">
+                What customers love
+              </h2>
+            </div>
+            <p class="max-w-xl text-sm text-rose-mid">
+              A few sweet words from regulars who come back for the cake, the cozy
+              vibe, and the extra care.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div
+            class="fade-in bg-white rounded-3xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-pink-light flex items-center justify-center text-pink-dark font-bold"
+              >
+                AM
+              </div>
+              <div>
+                <p class="font-semibold text-rose-text">Iesha R.</p>
+                <p class="text-xs text-rose-muted">Regular customer</p>
+              </div>
+            </div>
+            <p class="text-sm text-rose-mid leading-relaxed mb-5">
+              "SOOOOOOOOO GOOOOD"
+            </p>
+            <div class="flex items-center gap-1 text-pink-dark text-xs">
+              <span>★★★★★</span>
+              <span class="text-rose-muted">5.0</span>
+            </div>
+          </div>
+
+          <div
+            class="fade-in bg-white rounded-3xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-[#f5c4b0] flex items-center justify-center text-pink-dark font-bold"
+              >
+                JT
+              </div>
+              <div>
+                <p class="font-semibold text-rose-text">Lance T.</p>
+                <p class="text-xs text-rose-muted">LUVET</p>
+              </div>
+            </div>
+            <p class="text-sm text-rose-mid leading-relaxed mb-5">
+              "LUVET"
+            </p>
+            <div class="flex items-center gap-1 text-pink-dark text-xs">
+              <span>★★★★★</span>
+              <span class="text-rose-muted">5.0</span>
+            </div>
+          </div>
+
+          <div
+            class="fade-in bg-white rounded-3xl p-6 shadow-sm hover:-translate-y-1 hover:shadow-lg transition-all duration-300"
+          >
+            <div class="flex items-center gap-3 mb-4">
+              <div
+                class="w-12 h-12 rounded-full bg-[#c4d8f5] flex items-center justify-center text-pink-dark font-bold"
+              >
+                KL
+              </div>
+              <div>
+                <p class="font-semibold text-rose-text">Minh M.</p>
+                <p class="text-xs text-rose-muted">Weekly visitor</p>
+              </div>
+            </div>
+            <p class="text-sm text-rose-mid leading-relaxed mb-5">
+              "CHUYAA"
+            </p>
+            <div class="flex items-center gap-1 text-pink-dark text-xs">
+              <span>★★★★★</span>
+              <span class="text-rose-muted">5.0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <section
+      class="bg-gradient-to-r from-pink-deep to-pink-dark text-white text-center py-20 px-6"
+    >
+      <h2 class="font-display text-3xl md:text-4xl mb-3">
+        Get sweet updates 🎂
+      </h2>
+      <p class="text-white/80 text-sm mb-8">
+        New flavors, seasonal specials, and secret recipes — straight to your
+        inbox.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <input
+          type="email"
+          placeholder="Your email address"
+          class="px-6 py-3 rounded-full text-sm text-rose-text outline-none w-72 font-body"
+        />
+        <button
+          id="sub-btn"
+          class="px-7 py-3 rounded-full bg-rose-text text-white text-sm font-medium hover:bg-black/80 transition-colors"
+        >
+          Subscribe
+        </button>
+      </div>
+    </section>
+
+    <footer class="bg-rose-text text-white/70 pt-14 pb-0">
+      <div
+        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-12 pb-12 border-b border-white/10"
+      >
+        <div class="flex-1">
+          <h3 class="font-display text-xl text-white mb-2">🎀 Dolci</h3>
+          <p class="text-xs opacity-60">A taste of sweet.</p>
+        </div>
+
+        <div class="flex gap-12 flex-wrap">
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Shop
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Cakes</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Cookies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Gift Boxes</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Info
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Connect
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >TikTok</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6 py-5 text-center text-xs opacity-40">
+        © 2026 Dolci. Made with 🍓 and lots of butter.
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("nav-toggle");
+      const menu = document.getElementById("mobile-menu");
+      toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
+
+      const picksSlider = document.getElementById("sweetest-picks");
+      const picksPrev = document.getElementById("picks-prev");
+      const picksNext = document.getElementById("picks-next");
+      const scrollAmount = () => picksSlider.clientWidth * 0.8;
+
+      picksPrev.addEventListener("click", () => {
+        picksSlider.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+      picksNext.addEventListener("click", () => {
+        picksSlider.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const subBtn = document.getElementById("sub-btn");
+      subBtn.addEventListener("click", () => {
+        const input = subBtn.previousElementSibling;
+        if (input.value.trim()) {
+          subBtn.textContent = "Subscribed! 🎉";
+          subBtn.disabled = true;
+          input.value = "";
+          setTimeout(() => {
+            subBtn.textContent = "Subscribe";
+            subBtn.disabled = false;
+          }, 3000);
+        }
+      });
+    </script>
+  </body>
+</html>
