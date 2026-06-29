@@ -46,6 +46,9 @@
     </script>
 
     <style>
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         font-family: "DM Sans", system-ui, sans-serif;
       }
@@ -117,32 +120,33 @@
           </li>
           <li>
             <a
-              href="#"
+              href="#about"
               class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
               >About</a
             >
           </li>
           <li>
             <a
-              href="#"
+              href="menu.html"
               class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
               >Menu</a
             >
           </li>
           <li>
             <a
-              href="#"
+              href="#contact"
               class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors"
               >Contact</a
             >
           </li>
         </ul>
 
-        <button
-          class="hidden md:block text-sm font-medium px-5 py-2 rounded-full bg-pink-light text-pink-dark hover:bg-pink-mid transition-colors"
+        <a
+          href="customize.html"
+          class="hidden md:inline-flex items-center justify-center text-sm font-medium px-5 py-2 rounded-full bg-pink-light text-pink-dark hover:bg-pink-mid transition-colors"
         >
           Order Now
-        </button>
+        </a>
 
         <button id="nav-toggle" class="md:hidden text-pink-dark text-2xl">
           ☰
@@ -154,9 +158,9 @@
         class="hidden md:hidden px-6 pb-4 flex flex-col gap-4 border-t border-pink-mid bg-cream"
       >
         <a href="#" class="text-sm text-rose-mid font-medium py-1">Home</a>
-        <a href="#" class="text-sm text-rose-mid font-medium py-1">About</a>
-        <a href="#" class="text-sm text-rose-mid font-medium py-1">Menu</a>
-        <a href="#" class="text-sm text-rose-mid font-medium py-1">Contact</a>
+        <a href="#about" class="text-sm text-rose-mid font-medium py-1">About</a>
+        <a href="menu.html" class="text-sm text-rose-mid font-medium py-1">Menu</a>
+        <a href="#contact" class="text-sm text-rose-mid font-medium py-1">Contact</a>
       </div>
     </nav>
 
@@ -182,7 +186,7 @@
           </p>
           <div class="flex gap-3 justify-center md:justify-start flex-wrap">
             <a
-              href="#"
+              href="menu.html"
               class="px-7 py-3 rounded-full bg-pink-dark text-white text-sm font-medium hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all shadow-lg shadow-pink-dark/20"
             >
               Explore Menu
@@ -201,7 +205,7 @@
             class="blob w-72 h-72 md:w-96 md:h-96 overflow-hidden bg-pink-mid shadow-2xl shadow-pink-deep/25"
           >
             <img src="images/cake.jpg" alt="Description of the SAAD project image" width="600">
-             
+            
             />
           </div>
         </div>
@@ -332,7 +336,7 @@
       </div>
     </section>
 
-    <section class="bg-pink-light py-20">
+    <section id="about" class="bg-pink-light py-20">
       <div
         class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center gap-14"
       >
@@ -665,7 +669,7 @@
       </div>
     </section>
 
-    <footer class="bg-rose-text text-white/70 pt-14 pb-0">
+    <footer id="contact" class="bg-rose-text text-white/70 pt-14 pb-0">
       <div
         class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-12 pb-12 border-b border-white/10"
       >
