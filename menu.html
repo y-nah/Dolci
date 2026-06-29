@@ -13,10 +13,36 @@
       rel="stylesheet"
     />
 
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              pink: {
+                light: "#fde8ef",
+                mid: "#f9c4d4",
+                deep: "#e8839f",
+                dark: "#c95c7a",
+              },
+              cream: "#fff8f9",
+              rose: {
+                text: "#2d1a20",
+                mid: "#6b4352",
+                muted: "#b07a8e",
+              },
+            },
+            fontFamily: {
+              display: ["Playfair Display", "Georgia", "serif"],
+              body: ["DM Sans", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+
     <style>
       body {
         font-family: "DM Sans", system-ui, sans-serif;
-        background: #fff8f9;
         color: #2d1a20;
       }
       .font-display {
@@ -53,7 +79,7 @@
           >
           <a
             href="index.html"
-            class="inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-full border border-pink-mid text-rose-mid hover:bg-pink-light transition-colors"
+            class="inline-flex items-center justify-center text-sm font-medium px-4 py-2 rounded-full bg-pink-light text-pink-dark hover:bg-pink-mid transition-colors"
             >Home</a
           >
         </div>
@@ -79,96 +105,197 @@
     </header>
 
     <main class="max-w-6xl mx-auto px-6 py-16 space-y-16">
-      <section>
-        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <article
-            class="card rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+      <section class="space-y-8">
+        <div class="text-center">
+          <span
+            class="text-xs uppercase tracking-[4px] text-pink-deep font-bold"
           >
-            <div class="text-5xl mb-5">🧁</div>
-            <h2 class="font-display text-2xl text-rose-text mb-2">Mini Cake</h2>
-            <p class="text-sm text-rose-muted mb-4">
-              4-inch cake, perfect for one or two people.
-            </p>
-            <p class="font-semibold text-pink-dark mb-6">₱299</p>
-            <a
-              href="customize.html"
-              class="inline-flex items-center justify-center w-full rounded-full bg-pink-dark px-4 py-3 text-sm font-medium text-white hover:bg-[#b54d6a] transition-colors"
-              >Customize</a
-            >
-          </article>
+            Sets
+          </span>
+          <h2 class="font-display text-4xl text-rose-text">Sets</h2>
+        </div>
 
-          <article
-            class="card rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div
+            class="rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
           >
-            <div class="text-5xl mb-5">🎂</div>
-            <h2 class="font-display text-2xl text-rose-text mb-2">
-              Classic Cake
-            </h2>
-            <p class="text-sm text-rose-muted mb-4">
-              6-inch cake, ideal for small celebrations.
-            </p>
-            <p class="font-semibold text-pink-dark mb-6">₱499</p>
-            <a
-              href="customize.html"
-              class="inline-flex items-center justify-center w-full rounded-full bg-pink-dark px-4 py-3 text-sm font-medium text-white hover:bg-[#b54d6a] transition-colors"
-              >Customize</a
-            >
-          </article>
+            <h3 class="font-display text-2xl text-rose-text mb-6">Cakes</h3>
+            <dl class="space-y-5 text-rose-mid text-sm">
+              <div class="flex justify-between gap-4">
+                <dt>Midi-ish Tall + 12s cupcakes</dt>
+                <dd class="font-semibold text-pink-dark">₱1,399</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt>Midi-ish Tall + 12s cupcakes + number cake</dt>
+                <dd class="font-semibold text-pink-dark">₱1,999</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt>Supersized Tall + 12s cupcakes</dt>
+                <dd class="font-semibold text-pink-dark">₱2,099</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt>Supersized Tall + 12s cupcakes + number cake</dt>
+                <dd class="font-semibold text-pink-dark">₱2,799</dd>
+              </div>
+            </dl>
+          </div>
 
-          <article
-            class="card rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+          <div
+            class="rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
           >
-            <div class="text-5xl mb-5">🍰</div>
-            <h2 class="font-display text-2xl text-rose-text mb-2">
-              Party Cake
-            </h2>
-            <p class="text-sm text-rose-muted mb-4">
-              8-inch cake for bigger gatherings and special days.
-            </p>
-            <p class="font-semibold text-pink-dark mb-6">₱799</p>
-            <a
-              href="customize.html"
-              class="inline-flex items-center justify-center w-full rounded-full bg-pink-dark px-4 py-3 text-sm font-medium text-white hover:bg-[#b54d6a] transition-colors"
-              >Customize</a
-            >
-          </article>
+            <h3 class="font-display text-2xl text-rose-text mb-6">2 Tier</h3>
+            <dl class="space-y-5 text-rose-mid text-sm">
+              <div class="flex justify-between gap-4">
+                <dt>Mini 2 Tier (4” & 6”) + 12s Cupcake</dt>
+                <dd class="font-semibold text-pink-dark">₱1,599</dd>
+              </div>
+              <div class="flex justify-between gap-4">
+                <dt>Regular 2 Tier (6” & 8”) + 12s cupcake</dt>
+                <dd class="font-semibold text-pink-dark">₱2,999</dd>
+              </div>
+            </dl>
+          </div>
         </div>
       </section>
 
-      <section
-        class="bg-white rounded-[2rem] border border-pink-light p-8 shadow-sm"
-      >
-        <h2 class="font-display text-3xl text-rose-text mb-4">
-          What’s included
-        </h2>
-        <div class="grid gap-4 md:grid-cols-3 text-sm text-rose-mid">
-          <div>
-            <strong class="block mb-2 text-rose-text">Flavors</strong>
-            <p>Strawberry, Chocolate, Vanilla, Red Velvet, Matcha, Ube</p>
+      <section class="space-y-8">
+        <div class="text-center">
+          <span
+            class="text-xs uppercase tracking-[4px] text-pink-deep font-bold"
+          >
+            Menu
+          </span>
+          <h2 class="font-display text-4xl text-rose-text">Menu</h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2">
+          <div
+            class="rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+          >
+            <h3 class="font-display text-2xl text-rose-text mb-6">Cakes</h3>
+            <div class="grid gap-4 text-sm text-rose-mid">
+              <div
+                class="flex justify-between items-center gap-4 text-xs uppercase tracking-[2px] text-rose-text font-semibold"
+              >
+                <span>Item</span>
+                <span class="text-right">Regular</span>
+                <span class="text-right">Tall</span>
+              </div>
+              <div class="flex justify-between gap-4">
+                <span>Bento</span>
+                <span class="font-semibold">₱270</span>
+                <span class="font-semibold">₱400</span>
+              </div>
+              <div class="flex justify-between gap-4">
+                <span>Mini-sh (5”)</span>
+                <span class="font-semibold">₱450</span>
+                <span class="font-semibold">₱700</span>
+              </div>
+              <div class="flex justify-between gap-4">
+                <span>Midi-ish (6”)</span>
+                <span class="font-semibold">₱790</span>
+                <span class="font-semibold">₱1,090</span>
+              </div>
+              <div class="flex justify-between gap-4">
+                <span>Supersized (8”)</span>
+                <span class="font-semibold">₱1,050</span>
+                <span class="font-semibold">₱1,300</span>
+              </div>
+              <div class="flex justify-between gap-4">
+                <span>Number cake</span>
+                <span class="font-semibold">₱450</span>
+                <span class="text-transparent">-</span>
+              </div>
+            </div>
           </div>
-          <div>
-            <strong class="block mb-2 text-rose-text">Fillings</strong>
-            <p>
-              Cream Cheese, Strawberry Jam, Chocolate Ganache, Cookies & Cream
-            </p>
-          </div>
-          <div>
-            <strong class="block mb-2 text-rose-text">Decorations</strong>
-            <p>Bows, Hearts, Pearls, Cherries, Flowers, Sprinkles</p>
+
+          <div class="space-y-8">
+            <div
+              class="rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+            >
+              <h3 class="font-display text-2xl text-rose-text mb-6">
+                Desserts
+              </h3>
+              <div class="grid gap-4 text-sm text-rose-mid">
+                <div
+                  class="flex justify-between items-center gap-4 text-xs uppercase tracking-[2px] text-rose-text font-semibold"
+                >
+                  <span>Item</span>
+                  <span class="text-right">6s</span>
+                  <span class="text-right">12s</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Cupcakes</span>
+                  <span class="font-semibold">₱180</span>
+                  <span class="font-semibold">₱360</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Brownies</span>
+                  <span class="font-semibold">₱180</span>
+                  <span class="font-semibold">₱350</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Mamon</span>
+                  <span class="font-semibold">₱210</span>
+                  <span class="font-semibold">₱420</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Chocolate crinkles</span>
+                  <span class="font-semibold">₱150</span>
+                  <span class="font-semibold">₱300</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Cake pops</span>
+                  <span class="font-semibold">₱180</span>
+                  <span class="font-semibold">₱380</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Cheesecake bites</span>
+                  <span class="font-semibold">₱240</span>
+                  <span class="font-semibold">₱480</span>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="rounded-[2rem] bg-white p-8 border border-pink-light shadow-sm"
+            >
+              <h3 class="font-display text-2xl text-rose-text mb-6">
+                Cheesecakes
+              </h3>
+              <div class="grid gap-4 text-sm text-rose-mid">
+                <div
+                  class="flex justify-between items-center gap-4 text-xs uppercase tracking-[2px] text-rose-text font-semibold"
+                >
+                  <span>Flavor</span>
+                  <span class="text-right">4”</span>
+                  <span class="text-right">6”</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Blueberry Cheesecake</span>
+                  <span class="font-semibold">₱315</span>
+                  <span class="font-semibold">₱475</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Biscoff Cheesecake</span>
+                  <span class="font-semibold">₱325</span>
+                  <span class="font-semibold">₱490</span>
+                </div>
+                <div class="flex justify-between gap-4">
+                  <span>Oreo Cheesecake</span>
+                  <span class="font-semibold">₱295</span>
+                  <span class="font-semibold">₱400</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       <section class="text-center">
-        <p class="text-rose-mid mb-6">
-          Ready to build your own cake? Use the order page to personalize every
-          detail.
+        <p class="text-rose-mid">
+          Price may vary according to the design. Prices shown are base price!
         </p>
-        <a
-          href="customize.html"
-          class="inline-flex items-center justify-center rounded-full bg-pink-dark px-7 py-3 text-sm font-medium text-white hover:bg-[#b54d6a] transition-colors"
-          >Order Now</a
-        >
       </section>
     </main>
   </body>
