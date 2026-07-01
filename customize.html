@@ -83,10 +83,22 @@ class="font-display text-3xl font-bold text-pink-dark">
 🎀 Dolci
 </a>
 
+<div class="flex items-center gap-3">
+<a href="customize.html"
+class="inline-flex items-center justify-center text-sm font-semibold px-5 py-2 rounded-full bg-pink-dark text-white shadow-lg shadow-pink-dark/20 hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all whitespace-nowrap">
+Order Now
+</a>
+<div class="flex items-center gap-3">
+<a href="menu.html"
+class="inline-flex items-center justify-center text-sm font-semibold px-5 py-2 rounded-full bg-pink-dark text-white shadow-lg shadow-pink-dark/20 hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all whitespace-nowrap">
+Shop Ready Items
+</a>
 <a href="index.html"
 class="inline-flex items-center justify-center text-sm font-medium px-5 py-2 rounded-full bg-pink-light text-pink-dark hover:bg-pink-mid transition-colors">
 Back Home
 </a>
+</div>
+</div>
 
 </div>
 
@@ -518,6 +530,139 @@ e.target.value || '—';
 });
 
 </script>
+<footer id="contact" class="bg-rose-text text-white/70 pt-14 pb-0">
+      <div
+        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-12 pb-12 border-b border-white/10"
+      >
+        <div class="flex-1">
+          <h3 class="font-display text-xl text-white mb-2">🎀 Dolci</h3>
+          <p class="text-xs opacity-60">A taste of sweet.</p>
+        </div>
+
+        <div class="flex gap-12 flex-wrap">
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Shop
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Cakes</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Cookies</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Gift Boxes</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Info
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >About Us</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Blog</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >FAQ</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h4
+              class="text-xs font-semibold text-white uppercase tracking-widest mb-4"
+            >
+              Connect
+            </h4>
+            <ul class="space-y-2 text-xs">
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Instagram</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-pink-deep transition-colors cursor-default"
+                  >TikTok</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-6xl mx-auto px-6 py-5 text-center text-xs opacity-40">
+        © 2026 Dolci. Made with 🍓 and lots of butter.
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.getElementById("nav-toggle");
+      const menu = document.getElementById("mobile-menu");
+      toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1 },
+      );
+      document
+        .querySelectorAll(".fade-in")
+        .forEach((el) => observer.observe(el));
+
+      const picksSlider = document.getElementById("sweetest-picks");
+      const picksPrev = document.getElementById("picks-prev");
+      const picksNext = document.getElementById("picks-next");
+      const scrollAmount = () => picksSlider.clientWidth * 0.8;
+
+      picksPrev.addEventListener("click", () => {
+        picksSlider.scrollBy({ left: -scrollAmount(), behavior: "smooth" });
+      });
+      picksNext.addEventListener("click", () => {
+        picksSlider.scrollBy({ left: scrollAmount(), behavior: "smooth" });
+      });
+
+      const subBtn = document.getElementById("sub-btn");
+      subBtn.addEventListener("click", () => {
+        const input = subBtn.previousElementSibling;
+        if (input.value.trim()) {
+          subBtn.textContent = "Subscribed! 🎉";
+          subBtn.disabled = true;
+          input.value = "";
+          setTimeout(() => {
+            subBtn.textContent = "Subscribe";
+            subBtn.disabled = false;
+          }, 3000);
+        }
+      });
+    </script>
 
 </body>
 </html>
