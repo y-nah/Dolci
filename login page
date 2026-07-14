@@ -1,1 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dolci – Track Order</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pink: { light: "#fde8ef", mid: "#f9c4d4", deep: "#e8839f", dark: "#c95c7a" },
+            cream: "#fff8f9",
+            rose: { text: "#2d1a20", mid: "#6b4352", muted: "#b07a8e" },
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', "Georgia", "serif"],
+            body: ['"DM Sans"', "system-ui", "sans-serif"],
+          },
+          borderRadius: { "4xl": "2rem", "5xl": "2.5rem" },
+        },
+      },
+    };
+  </script>
+  <style>
+    body { font-family: "DM Sans", system-ui, sans-serif; }
+    .font-display { font-family: "Playfair Display", Georgia, serif; }
+    .status-pill { font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 9999px; }
+    .status-Order-Received { background: #fde8ef; color: #c95c7a; }
+    .status-Preparing { background: #fff3cd; color: #8a6d1a; }
+    .status-Ready { background: #d8f3dc; color: #2f7a3d; }
+    .status-Completed { background: #e2e2e2; color: #4b4b4b; }
 
+    .step { position: relative; flex: 1; text-align: center; }
+    .step .dot {
+      width: 34px; height: 34px; border-radius: 9999px; margin: 0 auto 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: #f9c4d4; color: #fff; font-weight: 700; font-size: 13px;
+      transition: background-color .3s ease;
+    }
+    .step.done .dot { background: #c95c7a; }
+    .step .line {
+      position: absolute; top: 17px; left: -50%; width: 100%; height: 3px;
+      background: #f9c4d4; z-index: -1;
+    }
+    .step:first-child .line { display: none; }
+    .step.done .line { background: #c95c7a; }
+  </style>
+</head>
+<body class="bg-cream text-rose-text">
+  <nav class="sticky top-0 z-50 bg-cream/90 backdrop-blur-md border-b border-pink-mid">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center gap-8">
+      <a href="index.html" class="font-display text-2xl font-bold text-pink-dark mr-auto">🎀 Dolci</a>
+      <ul class="hidden md:flex gap-8">
+        <li><a href="index.html" class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors">Home</a></li>
+        <li><a href="menu.html" class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors">Menu</a></li>
+        <li><a href="track-order.html" class="text-sm font-semibold text-pink-dark">Track Order</a></li>
+        <li><a href="reviews.html" class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors">Reviews</a></li>
+        <li><a href="profile.html" class="text-sm font-medium text-rose-mid hover:text-pink-dark transition-colors">Profile</a></li>
+      </ul>
+      <a href="customize.html" class="inline-flex items-center justify-center text-sm font-semibold px-5 py-2 rounded-full bg-pink-dark text-white shadow-lg shadow-pink-dark/20 hover:bg-[#b54d6a] hover:-translate-y-0.5 transition-all whitespace-nowrap">Order Now</a>
+      <button id="nav-toggle" class="md:hidden text-pink-dark text-2xl">☰</button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 flex flex-col gap-4 border-t border-pink-mid bg-cream">
+      <a href="index.html" class="text-sm text-rose-mid font-medium py-1">Home</a>
+      <a href="menu.html" class="text-sm text-rose-mid font-medium py-1">Menu</a>
+      <a href="track-order.html" class="text-sm text-rose-mid font-medium py-1">Track Order</a>
+      <a href="reviews.html" class="text-sm text-rose-mid font-medium py-1">Reviews</a>
+      <a href="profile.html" class="text-sm text-rose-mid font-medium py-1">Profile</a>
+    </div>
+  </nav>
+
+  <header class="bg-gradient-to-br from-pink-light via-[#fef0f4] to-cream py-16">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="text-xs uppercase tracking-[4px] text-pink-deep font-bold mb-3">Order status</p>
+      <h1 class="font-display text-4xl md:text-5xl text-rose-text">Track Your Order</h1>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-14 space-y-14">
+    <!-- Lookup box (works for guests too) -->
+    <section class="bg-white rounded-[2rem] border border-pink-light shadow-sm p-8">
+      <h2 class="font-display text-2xl text-rose-text mb-4">Look up an order</h2>
+      <form id="lookup-form" class="flex flex-col sm:flex-row gap-3">
+        <input
+          id="lookup-input"
+          type="text"
+          placeholder="Enter Order ID e.g. DLC-1234"
+          class="flex-1 px-4 py-3 rounded-full border border-pink-mid outline-none text-sm"
+        />
+        <button type="submit" class="px-7 py-3 rounded-full bg-pink-dark text-white text-sm font-semibold hover:bg-[#b54d6a] transition-all">Track</button>
+      </form>
+      <p id="lookup-error" class="hidden text-xs text-red-500 mt-3"></p>
+    </section>
+
+    <!-- Selected order tracker -->
+    <section id="tracker-section" class="hidden bg-white rounded-[2rem] border border-pink-light shadow-sm p-8">
+      <div class="flex flex-wrap items-start justify-between gap-4 mb-10">
+        <div>
+          <p class="text-xs font-semibold text-pink-deep uppercase tracking-wide" id="tracker-order-id">—</p>
+          <p class="text-xs text-rose-muted mt-1" id="tracker-date">—</p>
+        </div>
+        <span id="tracker-status-pill" class="status-pill">—</span>
+      </div>
+
+      <div class="flex mb-10" id="tracker-steps"></div>
+
+      <div class="border-t border-pink-light pt-6">
+        <p class="text-sm text-rose-mid mb-2" id="tracker-items">—</p>
+        <p class="text-sm font-semibold text-pink-dark" id="tracker-total">—</p>
+      </div>
+    </section>
+
+    <!-- Logged-in user's order list -->
+    <section id="my-orders-section">
+      <h2 class="font-display text-3xl text-rose-text mb-6">My Recent Orders</h2>
+      <div id="my-orders-list" class="grid gap-4 sm:grid-cols-2"></div>
+      <div id="my-orders-empty" class="hidden text-center bg-white rounded-[2rem] border border-pink-light p-10">
+        <p class="text-sm text-rose-mid mb-4">Log in to see your recent orders here.</p>
+        <a href="login.html" class="inline-flex items-center justify-center text-sm font-semibold px-6 py-2.5 rounded-full bg-pink-dark text-white hover:bg-[#b54d6a] transition-all">Log In</a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contact" class="bg-rose-text text-white/70 pt-14 pb-0">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row gap-12 pb-12 border-b border-white/10">
+      <div class="flex-1">
+        <h3 class="font-display text-xl text-white mb-2">🎀 Dolci</h3>
+        <p class="text-xs opacity-60">A taste of sweet.</p>
+      </div>
+    </div>
+    <div class="max-w-6xl mx-auto px-6 py-5 text-center text-xs opacity-40">© 2026 Dolci. Made with 🍓 and lots of butter.</div>
+  </footer>
+
+  <script src="dolci-shared.js"></script>
+  <script>
+    const toggle = document.getElementById("nav-toggle");
+    const menu = document.getElementById("mobile-menu");
+    toggle.addEventListener("click", () => menu.classList.toggle("hidden"));
+
+    const trackerSection = document.getElementById("tracker-section");
+    const lookupForm = document.getElementById("lookup-form");
+    const lookupInput = document.getElementById("lookup-input");
+    const lookupError = document.getElementById("lookup-error");
+
+    function renderTracker(order) {
+      lookupError.classList.add("hidden");
+      trackerSection.classList.remove("hidden");
+
+      document.getElementById("tracker-order-id").textContent = "Order " + order.id;
+      document.getElementById("tracker-date").textContent = formatDate(order.date);
+
+      const statusClass = "status-" + order.status.replace(/\s+/g, "-");
+      const pill = document.getElementById("tracker-status-pill");
+      pill.className = "status-pill " + statusClass;
+      pill.textContent = order.status;
+
+      const currentIndex = ORDER_STATUSES.indexOf(order.status);
+      const stepsHtml = ORDER_STATUSES.map((label, i) => {
+        const done = i <= currentIndex;
+        return `
+          <div class="step ${done ? "done" : ""}">
+            <div class="line"></div>
+            <div class="dot">${done ? "✓" : i + 1}</div>
+            <p class="text-xs font-medium ${done ? "text-rose-text" : "text-rose-muted"}">${label}</p>
+          </div>
+        `;
+      }).join("");
+      document.getElementById("tracker-steps").innerHTML = stepsHtml;
+
+      const itemsText = order.items.map((i) => `${i.name} (${i.size}) x${i.qty}`).join(", ");
+      document.getElementById("tracker-items").textContent = itemsText;
+      document.getElementById("tracker-total").textContent = "Total: ₱" + order.total;
+
+      trackerSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    lookupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const id = lookupInput.value.trim().toUpperCase();
+      const order = findOrderById(id);
+      if (!order) {
+        trackerSection.classList.add("hidden");
+        lookupError.textContent = "No order found with that ID. Double check and try again.";
+        lookupError.classList.remove("hidden");
+        return;
+      }
+      renderTracker(order);
+    });
+
+    // "My Recent Orders" section — only for logged-in users
+    const email = getCurrentUserEmail();
+    const listEl = document.getElementById("my-orders-list");
+    const emptyEl = document.getElementById("my-orders-empty");
+
+    if (!email) {
+      emptyEl.classList.remove("hidden");
+    } else {
+      seedDemoOrdersIfEmpty(email);
+      const orders = getOrdersForUser(email);
+      if (orders.length === 0) {
+        emptyEl.classList.remove("hidden");
+        emptyEl.querySelector("p").textContent = "You haven't placed any orders yet.";
+        emptyEl.querySelector("a").textContent = "Browse the Menu";
+        emptyEl.querySelector("a").href = "menu.html";
+      } else {
+        listEl.innerHTML = orders
+          .map((order) => {
+            const statusClass = "status-" + order.status.replace(/\s+/g, "-");
+            return `
+              <button data-order-id="${order.id}" class="order-card text-left bg-white rounded-[1.75rem] border border-pink-light shadow-sm p-5 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-2">
+                  <p class="text-xs font-semibold text-pink-deep uppercase tracking-wide">${order.id}</p>
+                  <span class="status-pill ${statusClass}">${order.status}</span>
+                </div>
+                <p class="text-xs text-rose-muted">${formatDate(order.date)}</p>
+              </button>
+            `;
+          })
+          .join("");
+
+        document.querySelectorAll(".order-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const order = findOrderById(card.dataset.orderId);
+            if (order) renderTracker(order);
+          });
+        });
+      }
+    }
+
+    // If arriving from profile.html with ?order=DLC-1234, open it directly
+    const params = new URLSearchParams(window.location.search);
+    const preselectedId = params.get("order");
+    if (preselectedId) {
+      const order = findOrderById(preselectedId);
+      if (order) renderTracker(order);
+    }
+  </script>
+</body>
+</html>
